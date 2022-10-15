@@ -4,10 +4,7 @@ import { PrimaryGeneratedColumn, BaseEntity, Column, Entity } from 'typeorm';
 export class Gatito extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  gatoid: number;
-
+  
   @Column()
   nombre: string;
 

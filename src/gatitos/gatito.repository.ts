@@ -8,10 +8,9 @@ export class GatitoRepository extends Repository<Gatito> {
   public async createGatito(
     CreateGatitoDto: CreateGatitoDTO,
   ): Promise<Gatito> {
-    const {gatoid, nombre, bigotes, pelaje, personalidad, edad, raza,} = CreateGatitoDto;
+    const {nombre, bigotes, pelaje, personalidad, edad, raza,} = CreateGatitoDto;
 
     const qatito = new Gatito();
-    qatito.id = gatoid;
     qatito.nombre = nombre;
     qatito.edad = edad; 
     qatito.bigotes = bigotes;
@@ -24,11 +23,17 @@ export class GatitoRepository extends Repository<Gatito> {
     return qatito;
   }
 
+  public async getAll(): Promise<Gatito[]>{
+    let allgatos;
+    await allgatos.find();
+    return allgatos;
+  }
+
   public async editGatito(
     CreateGatitoDto: CreateGatitoDTO,
     editedGatito : Gatito,
     ): Promise<Gatito> {
-      const {gatoid, nombre, bigotes, pelaje, personalidad, edad, raza} = CreateGatitoDto;
+      const { nombre, bigotes, pelaje, personalidad, edad, raza} = CreateGatitoDto;
   
 
     editedGatito.nombre = nombre;

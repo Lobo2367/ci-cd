@@ -19,6 +19,7 @@ import { GatitoRepository } from './gatitos/gatito.repository';
       database: 'test_db',
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
       synchronize: true,
+      autoLoadEntities: true
     }),
     GatitosModule,
   ],

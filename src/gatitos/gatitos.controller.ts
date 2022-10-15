@@ -24,13 +24,13 @@ import { CreateGatitoDTO } from './create.gatito.dto';
     }
   
     @Get('all')
-    public async getGatos(): Promise<Gatito[]> {
-      const gatos = await this.gatitoService.getGatitos();
-      return gatos;
+    public async getProducts(): Promise<Gatito[]> {
+      const products = await this.gatitoService.getGatitos();
+      return products;
     }
   
     @Get('/:GatitoID')
-    public async getGatito(@Param('GatitoID') GatitoID: number) {
+    public async getGatito(@Param('GatitoID') GatitoID: string) {
       const gato = await this.gatitoService.getGatito(GatitoID);
       return gato;
     }
@@ -38,7 +38,7 @@ import { CreateGatitoDTO } from './create.gatito.dto';
     @Patch('/edit/:GatitoID')
     public async editGatito(
       @Body() createGatitoDto: CreateGatitoDTO,
-      @Param('GatitoID') GatitoID: number,
+      @Param('GatitoID') GatitoID: string,
     ): Promise<Gatito> {
       const gatito = await this.gatitoService.editGatito(
         GatitoID,
@@ -48,7 +48,7 @@ import { CreateGatitoDTO } from './create.gatito.dto';
     }
   
     @Delete('/delete/:gatitoID')
-    public async deletegatito(@Param('GatitoID') gatitoId: number) {
+    public async deletegatito(@Param('GatitoID') gatitoId: string) {
       const deletedgatito = await this.gatitoService.deleteGatito(gatitoId);
       return deletedgatito;
     }

@@ -9,9 +9,6 @@ export class CreateGatitoDTO {
   
     @IsNumber()
     edad: number;
-
-    @IsNumber()
-    gatoid: number;
   
     @IsString()
     pelaje: string;
@@ -21,8 +18,4 @@ export class CreateGatitoDTO {
   
     @IsString()
     personalidad: string;
-}
-
-function IsUnique() {
-    throw new Error('Function not implemented.');
 }

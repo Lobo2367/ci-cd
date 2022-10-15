@@ -9,23 +9,26 @@ import { GatitoRepository } from './gatito.repository';
 export class GatitoService {
   constructor(
     @InjectRepository(GatitoRepository)
-    private GatitoRepository: GatitoRepository,
+    private GqatitoRepository: GatitoRepository,
   ) {}
 
   public async createGatito(
     createGatitoDto: CreateGatitoDTO,
   ): Promise<Gatito> {
-    return await this.GatitoRepository.createGatito(createGatitoDto);
+    return await this.GqatitoRepository.createGatito(createGatitoDto);
   }
 
 
   public async getGatitos(): Promise<Gatito[]> {
-    return await this.GatitoRepository.find();
+    let arr;
+    arr = await this.GqatitoRepository.find();
+    console.log(arr)
+    return arr;
   }
 
 
-  public async getGatito(GatitoId: number): Promise<Gatito> {
-    const foundGatito = await this.GatitoRepository.findOne({where: {gatoid: GatitoId}});
+  public async getGatito(GatitoId: string): Promise<Gatito> {
+    const foundGatito = await this.GqatitoRepository.findOne({where: {nombre: GatitoId}});
     if (!foundGatito) {
       throw new NotFoundException('Gatito not found');
     }
@@ -34,18 +37,18 @@ export class GatitoService {
 
 
   public async editGatito(
-    GatitoId: number,
+    GatitoId: string,
     createGatitoDto: CreateGatitoDTO,
   ): Promise<Gatito> {
-    const editedGatito = await this.GatitoRepository.findOne({where: {gatoid: GatitoId}});
+    const editedGatito = await this.GqatitoRepository.findOne({where: {nombre: GatitoId}});
     if (!editedGatito) {
       throw new NotFoundException('Gatito not found');
     }
-    return this.GatitoRepository.editGatito(createGatitoDto, editedGatito);
+    return this.GqatitoRepository.editGatito(createGatitoDto, editedGatito);
   }
 
 
-  public async deleteGatito(GatitoId: number): Promise<void> {
-    await this.GatitoRepository.delete(GatitoId);
+  public async deleteGatito(GatitoId: string): Promise<void> {
+    await this.GqatitoRepository.delete(GatitoId);
   }
 }
